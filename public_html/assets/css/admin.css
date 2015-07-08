@@ -1,0 +1,174 @@
+html {
+overflow: -moz-scrollbars-vertical; 
+overflow-y: scroll;
+}
+
+body {
+    background-image: url(../images/backgroundRed.jpg);
+    background-size: 100%;
+}
+
+#header{
+    //height: 80px; 
+}
+
+#navigation{
+
+}
+
+#SS_sidebar{
+    //height: 600px; 
+}
+
+#main {
+    text-align: justify;
+}
+
+#footer{
+    //height: 80px;
+}
+
+#inner_navbar {
+    overflow: hidden;
+    background-color: #ffffff;
+    display: none;
+}
+
+#SS_survey {
+    margin: auto;
+}
+
+.SS_container {
+    width: 100%;
+    background-color: rgba(207, 207, 207, 0.93);
+    margin: 5px 0 5px 0;
+    padding: 5px 5px 5px 5px;
+
+    // Rounded corners
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    // Shadow
+    -moz-box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+.SS_padding-horizontal {
+    padding: 0 5px 0 5px !important;
+}
+
+
+
+.SS_no-padding-horizontal {
+    padding: 0px !important;
+}
+
+.SS_padding-vertical {
+    padding: 5px 0 5px 0 !important;
+}
+
+.SS_border {
+    border-style: dashed;
+    border-width: 1px;
+    // Rounded corners
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+.SS_comment {
+    background-color: rgb(230, 230, 230);
+    margin-bottom: 9px;
+    // Rounded corners
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+.SS_post > p{
+    margin-top: 10px;
+}
+
+.SS_post > span{
+    padding: 10px;
+}
+
+.SS_calendar {
+    height: 235px;
+    margin: auto;
+}
+
+.SS_latest_posts {
+    text-align: center;
+}
+
+.SS_latest_posts > a > p {
+    font-size: 120%;
+    margin: 0;
+}
+
+.SS_latest_posts > p {
+    font-size: 100%;
+    margin: 0;
+}
+
+.SS_links {
+    text-align: center;
+}
+
+.SS_links > img {
+    padding: 0px 10px 0 10px;
+}
+
+.SS_info {
+    text-align: center; 
+}
+
+.SS_center-align {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.datepicker-inline {
+    width: 210px !important;
+}
+
+.seperator {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.youtube-player { display: block; 
+                  margin: 0 auto;
+                  text-align: center;
+}
+
+a:visited {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+a:active {
+    color: #AE3D3A !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #AE3D3A !important;
+    text-decoration: none !important;
+}
+
+a {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+
+//bootstrap datepicker
+.table-condensed {
+    width: 100%;
+}
+

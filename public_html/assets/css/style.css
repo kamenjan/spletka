@@ -1,0 +1,32 @@
+body {
+    background-image: url(../images/backgroundRed.jpg);
+    background-size: 100%;
+}
+
+.SS_container {
+    width: 100%;
+    background-color: rgba(207, 207, 207, 0.3);
+    margin: 5px 0 5px 0;
+    padding: 5px;
+
+    // Rounded corners
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    // Shadow
+    -moz-box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+.SS_padding {
+    padding: 0 5px 0 5px !important;
+}
+
+.SS_post p{   
+    background: #ff0000;
+
+}
+
+
