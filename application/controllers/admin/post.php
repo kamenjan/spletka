@@ -36,8 +36,13 @@ class Post extends Admin_Controller {
         // Fetch a post or set a new one
         if ($id) {
             $this->data['post'] = $this->post_m->get($id);
-            // Parse MySQL timestamp to d-m-Y string for preset input value
-            $this->data['post']->date_event = date('d-m-Y', strtotime($this->data['post']->date_event));
+
+            // If post.date_event is not NULL, parse post.date_event MySQL timestamp 
+            // to d-m-Y string for date_event input preset value in edit/post view
+            if ($this->data['post']->date_event) {
+                $this->data['post']->date_event = date('d-m-Y', strtotime($this->data['post']->date_event));
+            }
+
             count($this->data['post']) || $this->data['errors'][] = 'Post could not be found';
         } else {
             $this->data['post'] = $this->post_m->get_new();
@@ -59,12 +64,17 @@ class Post extends Admin_Controller {
                 'yt_link',
                 'fl_link'
             ));
-            $data['date_event'] = date('Y-m-d H:i:s', strtotime($this->input->post('date_event')));
+
+            // If date_event is set save it to DB, otherwise ignore
+            if ($this->input->post('date_event') != '') {
+                $data['date_event'] = date('Y-m-d H:i:s', strtotime($this->input->post('date_event')));
+            }
+
             $data['author'] = $this->session->userdata('name');
-            
-            $data['season_id'] = $this->season_m->get_ID_by_date($data['date_event']);
-           
-            //dump_exit($data);
+
+            // Set season_id of this post to id of current season based on current time
+            $data['season_id'] = $this->season_m->get_ID_by_date(date("Y-m-d H:i:s"));
+
             $this->post_m->save($data, $id);
             redirect('admin/post');
         }
@@ -85,6 +95,11 @@ class Post extends Admin_Controller {
     }
 
     function approve($id) {
+
+        if (!$this->correct_permissions('admin')) {
+            redirect(base_url() . 'admin/post');
+        }
+
         $this->spletka_m->post_m->approve($id);
         redirect(base_url() . 'admin/post');
     }

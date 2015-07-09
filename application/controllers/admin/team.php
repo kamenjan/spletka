@@ -26,6 +26,12 @@ class Team extends Admin_Controller {
     }
 
     public function edit($id = NULL) {
+
+        // Teams can be added or edited only by admin type account
+        if (!$this->correct_permissions('admin')) {
+            redirect(base_url('admin/team'));
+        }
+        
         // Fetch a team or set a new one
         if ($id) {
             $this->data['team'] = $this->spletka_m->team_m->get($id);
@@ -65,7 +71,7 @@ class Team extends Admin_Controller {
                 'description',
                 'school'
             ));
-            
+
             // If no picture was selected ond edit, keep the old reference (default = no_image.png), 
             // otherwise resize it, save it, set it as a new reference and delete the old file
             if ($this->input->post('default_picture') == 'on') {
@@ -73,11 +79,11 @@ class Team extends Admin_Controller {
             } else if ($this->data['file_data']['orig_name'] === "") {
                 $data['picture'] = $this->data['team']->picture;
             } else {
-                $this->team_m->delete_picture($this->data['file_data']['file_path'] . $this->data['team']->picture);                
+                $this->team_m->delete_picture($this->data['file_data']['file_path'] . $this->data['team']->picture);
                 $this->resize_image($this->data['file_data']['full_path'], $this->data['team']->name, $this->data['controller']);
                 $data['picture'] = $this->upload->data()['raw_name'] . '_thumb' . $this->upload->data()["file_ext"];
             }
-            
+
             //dump_exit($this->data['file_data']);
 
             $this->team_m->save($data, $id);

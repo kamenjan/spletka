@@ -2,7 +2,7 @@
 
 <?php
 //dump($this->_ci_cached_vars);
-dump($this->session->userdata);
+//dump($this->session->userdata);
 ?>
 
 <body>

@@ -1,6 +1,10 @@
-<?php //dump($this->_ci_cached_vars); ?>
-<a class="btn btn-lg" href="<?= base_url('admin/personnel/edit') ?>"><span class="glyphicon glyphicon-plus"></span> Dodaj novo osebo</a>
-<hr>
+<?php
+if ($account_type == 'admin') {
+    ?>
+    <a class="btn btn-lg" href="<?= base_url('admin/personnel/edit') ?>"><span class="glyphicon glyphicon-plus"></span> Dodaj novo osebo</a>
+    <hr>
+<?php }
+?>
 
 <?php
 if (isset($personnel)) {
@@ -9,7 +13,7 @@ if (isset($personnel)) {
         ?>
         <div class="row">
             <div class="col-xs-3">
-                <a href="<?= base_url() ?>admin/personnel/show_person/<?= $row->id ?>"><?= substr(strip_tags($row->name), 0, 20).' ...' ?></a>
+                <a href="<?= base_url() ?>admin/personnel/show_person/<?= $row->id ?>"><?= substr(strip_tags($row->name), 0, 20) . ' ...' ?></a>
             </div>
             <div class="col-xs-2">
             </div>

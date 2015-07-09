@@ -27,6 +27,10 @@ class Personnel extends Admin_Controller {
 
     public function edit($id = NULL) {
 
+        if (!$this->correct_permissions('admin')) {
+            redirect(base_url('admin/personnel'));
+        }
+
         // Fetch a person or set a new one
         if ($id) {
             $this->data['person'] = $this->personnel_m->get($id);

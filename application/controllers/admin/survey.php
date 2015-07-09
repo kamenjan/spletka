@@ -30,6 +30,11 @@ class Survey extends Admin_Controller {
     }
 
     public function edit($id = NULL) {
+
+        if (!$this->correct_permissions('admin')) {
+            redirect(base_url('admin/survey'));
+        }
+        
         // Fetch a survey or set a new one
         if ($id) {
             $this->data['survey'] = $this->survey_m->get($id);
@@ -78,6 +83,9 @@ class Survey extends Admin_Controller {
     }
 
     function activate($id) {
+        if (!$this->correct_permissions('admin')) {
+            redirect(base_url('admin/survey'));
+        }
 
         $this->survey_m->activate($id);
         redirect(base_url() . 'admin/survey');

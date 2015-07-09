@@ -14,7 +14,7 @@
 
     <div class="SS_latest_posts"> 
         <h3>ne spreglej:</h3>
-        <?php foreach ($latest as $post) { ?>
+        <?php foreach ($announcements as $post) { ?>
             <a  href="<?= base_url() ?>post/show_post/<?= $post->id ?>"><p><?= $post->title ?></p></a>
             <p><?= date('d.m.y', strtotime($post->date_created)) . ' | ' . translate($post->tag); ?></p>
         <?php } ?>

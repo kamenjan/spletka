@@ -14,6 +14,8 @@ function translate($string) {
             return 'Članek';
         case 'international':
             return 'International';
+        case 'announcement':
+            return 'Obvestilo';
         case 'active':
             return 'Aktivna';
         case 'ready':

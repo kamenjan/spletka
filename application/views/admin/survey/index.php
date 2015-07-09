@@ -1,6 +1,8 @@
-<?php //dump($this->_ci_cached_vars); ?>
-<a class="btn btn-lg" href="<?= base_url('admin/survey/edit') ?>"><span class="glyphicon glyphicon-plus"></span> Dodaj novo anketo</a>
-<hr>
+<?php if ($account_type == 'admin') { ?>
+    <a class="btn btn-lg" href="<?= base_url('admin/survey/edit') ?>"><span class="glyphicon glyphicon-plus"></span> Dodaj novo anketo</a>
+    <hr>
+<?php }
+?>
 
 <?php
 if (isset($surveys)) {
@@ -23,10 +25,10 @@ if (isset($surveys)) {
                         echo '<span class="glyphicon glyphicon-pushpin"></span>';
                         break;
                     case 'ready':
-                        echo '<a href="' . base_url('admin/survey/activate/') . '/' . $row->id .'"><span class="glyphicon glyphicon-time"></span></a>';
+                        echo '<a href="' . base_url('admin/survey/activate/') . '/' . $row->id . '"><span class="glyphicon glyphicon-time"></span></a>';
                         break;
                     case 'finished':
-                        echo '<span class="glyphicon glyphicon-check"></span>';                        
+                        echo '<span class="glyphicon glyphicon-check"></span>';
                         break;
                 }
                 ?>

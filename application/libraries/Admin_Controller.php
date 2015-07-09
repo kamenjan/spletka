@@ -25,12 +25,8 @@ class Admin_Controller extends MY_Controller {
 
     function correct_permissions($required) {
         $user_type = $this->session->userdata('type');
-        if ($required == "user") {
+        if ($required == "editor") {
             if ($user_type) {
-                return true;
-            }
-        } elseif ($required == "author") {
-            if ($user_type == "admin" || $user_type == "author") {
                 return true;
             }
         } elseif ($required == "admin") {

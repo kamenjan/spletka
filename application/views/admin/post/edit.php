@@ -1,5 +1,5 @@
 <?php echo validation_errors(); ?>
-<?php //dump($this->_ci_cached_vars); ?>
+<?php dump($this->_ci_cached_vars);     ?>
 <?php echo form_open(); ?>
 <div class="container-fluid">
     <div class="row SS_padding-vertical">
@@ -17,7 +17,15 @@
         </div>
         <div class="col-xs-10">
             <div class="dropdown">
-                <?= form_dropdown('tag', ['news' => 'novica', 'report' => 'reportaža', 'article' => 'članek', 'international' => 'international'], $post->tag); ?>
+                <?=
+                form_dropdown('tag', [
+                    'news' => 'novica',
+                    'report' => 'reportaža',
+                    'article' => 'članek',
+                    'international' => 'international',
+                    'announcement' => 'obesvtilo'
+                        ], $post->tag);
+                ?>
             </div>
         </div>
     </div>
@@ -36,16 +44,13 @@
             Datum dogodka
         </div>
         <div class="col-xs-10">
-            <input type="text" name="date_event" value="<?= $post->date_event; ?>" class="datepicker" >
-        </div>
-    </div>
-
-    <div class="row SS_padding-vertical" id="image">
-        <div class="col-xs-2">
-            Slika
-        </div>
-        <div class="col-xs-10">
-
+            <?php if ($post->date_event == null) { ?>
+                <input type="text" name="date_event" class="datepicker" >
+            <?php } else { ?>
+                <input type="text" name="date_event" value="<?= $post->date_event; ?>" class="datepicker" >
+            <?php }  ?>
+            
+            
         </div>
     </div>
 

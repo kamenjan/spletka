@@ -74,10 +74,11 @@ class Post_m extends MY_Model {
         return $query->num_rows();
     }
 
-    function get_latest() {
+    function get_announcements() {
         $this->db->order_by("date_created", "desc");
         $this->db->select('id, tag, title, date_created, author');
-        $this->db->where('approved =', 'true');
+        $this->db->where(['approved' => 'true', 'tag' => 'announcement']);
+        //$this->db->where('approved =', 'true');
         $this->db->limit(3);
         return $this->db->get($this->_table_name)->result();
     }
@@ -99,7 +100,8 @@ class Post_m extends MY_Model {
         $this->db->where('date_event >', $start);
         $this->db->where('date_event <', $end);
         $this->db->where('approved =', 'true');
-        
+
         return $this->db->get($this->_table_name)->result_array();
     }
+
 }

@@ -1,6 +1,3 @@
-<a class="btn btn-lg" href="<?= base_url('admin/season/edit') ?>"><span class="glyphicon glyphicon-plus"></span> Dodaj novo sezono</a>
-<hr>
-
 <?php
 if (isset($seasons)) {
     echo '<div class="container-fluid">';
@@ -12,13 +9,20 @@ if (isset($seasons)) {
             </div>
 
             <div class="col-xs-8">
-                <a class="btn glyphicon glyphicon-edit" href="<?= base_url('admin/season/edit/') . '/' . $row->id ?>"></a>
+
+                <?php
+                if ($account_type == 'admin') {
+                    ?>
+                    <a class="btn glyphicon glyphicon-edit" href="<?= base_url('admin/season/edit/') . '/' . $row->id ?>"></a>
+                <?php }
+                ?>
+
             </div>
         </div>
         <?php
     }
     echo '</div>';
-}   
+}
 ?>
 
 

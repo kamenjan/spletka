@@ -24,6 +24,13 @@ class Season extends Admin_Controller {
     }
 
     public function edit($id) {
+        
+        // Season are premade rows, it is not possible to create a new one.
+        // If there is no $id in the argument or user is not admin, 
+        // redirect to season/index
+        if (!$id || !$this->correct_permissions('admin')) {
+            redirect(base_url('admin/season'));
+        }
 
         $this->data['teamIDs'] = $this->teams_to_seasons_m->get($id, 'ID');
         

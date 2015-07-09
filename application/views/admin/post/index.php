@@ -25,17 +25,7 @@ if (isset($posts)) {
                 <?php echo date('d.m.y H:i', strtotime($row->date_created)); ?>
             </div>
             <div class="col-xs-2">
-                <?php
-                if ($row->tag == 'news') {
-                    echo 'Novica';
-                } elseif ($row->tag == 'report') {
-                    echo 'Reportaža';
-                } elseif ($row->tag == 'article') {
-                    echo 'Članek';
-                } elseif ($row->tag == 'international') {
-                    echo 'International';
-                }   
-                ?>
+                <?= translate($row->tag); ?>
             </div>
             <div class="col-xs-2">
                 <?= $row->author ?>

@@ -6,7 +6,7 @@ class Frontend_Controller extends MY_Controller {
         parent::__construct();
         $this->data['meta_title'] = '';
         $this->data['current_season'] = $this->spletka_m->get_current_season()['season']->name;
-        $this->data['latest'] = $this->post_m->get_latest();
+        $this->data['announcements'] = $this->post_m->get_announcements();
 
         $this->data['user_data'] = $this->session->all_userdata();
         $this->data['survey'] = $this->spletka_m->get_survey();
