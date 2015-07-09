@@ -4,7 +4,7 @@
 <div class="data-container" data-controller="<?= $controller; ?>" data-base_url="<?= $base_url; ?>" data-answered_survey="<?= $answered_survey; ?>">
 <?php
 //dump($this->_ci_cached_vars);
-dump($this->session->userdata);
+//dump($this->session->userdata);
 ?>
 </div>
 

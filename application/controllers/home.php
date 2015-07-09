@@ -4,7 +4,7 @@ class Home extends Frontend_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->data['meta_title'] = 'Domov';       
+        $this->data['meta_title'] = 'Domov';
         $this->data['controller'] = strtolower(get_class());
     }
 

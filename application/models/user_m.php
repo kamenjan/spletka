@@ -51,29 +51,36 @@ class User_m extends MY_Model {
         parent::__construct();
     }
 
-    
     // TODO Seperate design based cookies and backend cookies !! 
     public function login() {
-        $user = $this->get_by(array(
+        $user = $this->get_by([
             'email' => $this->input->post('email'),
             'password' => $this->hash($this->input->post('password')),
-                ), TRUE);
+                ], TRUE);
 
         if (count($user)) {
             // Log in user
-            $data = array(
+            $data = [
                 'name' => $user->name,
                 'email' => $user->email,
                 'id' => $user->id,
                 'type' => $user->type,
                 'loggedin' => TRUE,
-            );
+            ];
             $this->session->set_userdata($data);
         }
     }
 
     public function logout() {
-        $this->session->sess_destroy();
+        $active_user_data = [
+                'name' => '',
+                'email' => '',
+                'id' => '',
+                'type' => '',
+                'loggedin' => ''
+            ];
+
+        $this->session->unset_userdata($active_user_data);
     }
 
     public function loggedin() {
