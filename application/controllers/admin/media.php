@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Gallery extends Admin_Controller {
+class Media extends Admin_Controller {
 
     function __construct() {
         parent::__construct();
@@ -12,27 +12,27 @@ class Gallery extends Admin_Controller {
     }
 
     public function index() {
-        $this->data['galleries'] = $this->gallery_m->get();
+        $this->data['media'] = $this->media_m->get();
 
         // Show seasons by their name not ID
-        foreach ($this->data['galleries'] as $key => $gallery) {
-            $this->data['galleries'][$key]->season_name = $this->season_m->get_by(['id' => $gallery->seasonID])[0]->name;
+        foreach ($this->data['media'] as $key => $media) {
+            $this->data['media'][$key]->season_name = $this->season_m->get_by(['id' => $media->seasonID])[0]->name;
         }
 
-        $this->data['subview'] = 'admin/gallery/index';
+        $this->data['subview'] = 'admin/media/index';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
-    function show_gallery($id) {
-        $this->data['gallery'] = $this->gallery_m->get($id);
-        $this->data['ID_Array'] = $this->gallery_m->get_ID_array();
+    function show_media($id) {
+        $this->data['media'] = $this->media_m->get($id);
+        $this->data['ID_Array'] = $this->media_m->get_ID_array();
 
         // Get the actual photo urls via a call to 'phpflickr' library with 
         // gallerys ID as an argument
         $this->load->library('phpflickr');
-        $this->data['gallery']->flickr = $this->phpflickr->photosets_getPhotos($this->data['gallery']->fl_link);
+        $this->data['media']->flickr = $this->phpflickr->photosets_getPhotos($this->data['media']->link);
 
-        $this->data['subview'] = 'admin/gallery/gallery';
+        $this->data['subview'] = 'admin/media/gallery';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
@@ -45,15 +45,15 @@ class Gallery extends Admin_Controller {
 
         // Fetch a gallery or set a new one
         if ($id) {
-            $this->data['gallery'] = $this->gallery_m->get($id);
-            $this->data['gallery']->date = date('d-m-Y', strtotime($this->data['gallery']->date));
-            count($this->data['gallery']) || $this->data['errors'][] = 'Gallery could not be found';
+            $this->data['media'] = $this->media_m->get($id);
+            $this->data['media']->date = date('d-m-Y', strtotime($this->data['media']->date));
+            count($this->data['media']) || $this->data['errors'][] = 'Media could not be found';
         } else {
-            $this->data['gallery'] = $this->gallery_m->get_new();
+            $this->data['media'] = $this->media_m->get_new();
         }
 
         // Set up the form and form rules
-        $rules = $this->gallery_m->rules;
+        $rules = $this->media_m->rules;
         $this->form_validation->set_rules($rules);
 
         // Helps with validation
@@ -63,32 +63,32 @@ class Gallery extends Admin_Controller {
         if ($this->form_validation->run() == TRUE) {
 
             // Set $data array with form input ($_POST) columns
-            $data = $this->gallery_m->array_from_post(array(
+            $data = $this->media_m->array_from_post(array(
                 'name',
-                'fl_link',
+                'link',
                 'seasonID'
             ));
-            $data['fl_link'] = trim($data['fl_link']);
+            $data['link'] = trim($data['link']);
             $data['date'] = date('Y-m-d H:i:s', strtotime($this->input->post('date')));
 
             // Validate the flickr photoset ID
-            if ($this->phpflickr->photosets_getPhotos($data['fl_link'])) {
-                $this->gallery_m->save($data, $id);
-                redirect('admin/gallery');
+            if ($this->phpflickr->photosets_getPhotos($data['link'])) {
+                $this->media_m->save($data, $id);
+                redirect('admin/media');
             } else {
                 $this->data['errors']['photoset ID error'] = 'Ta photoset ne obstaja';
             }
         }
 
         // Load the view
-        $this->data['subview'] = 'admin/gallery/edit';
+        $this->data['subview'] = 'admin/media/edit';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
     function delete($id) {
 
         if ($this->correct_permissions('admin')) {
-            $this->gallery_m->delete($id);
+            $this->media_m->delete($id);
         }
 
         redirect(base_url() . 'admin/gallery');

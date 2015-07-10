@@ -15,7 +15,7 @@ class Spletka_m extends CI_Model {
         $this->load->model('post_m');
         $this->load->model('team_m');
         $this->load->model('season_m');
-        $this->load->model('gallery_m');
+        $this->load->model('media_m');
         $this->load->model('comment_m');
         $this->load->model('personnel_m');
         $this->load->model('survey_m');

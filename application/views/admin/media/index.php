@@ -1,4 +1,4 @@
-<a class="btn btn-lg" href="<?= base_url('admin/gallery/edit') ?>"><span class="glyphicon glyphicon-plus"></span> Dodaj nov album</a>
+<a class="btn btn-lg" href="<?= base_url('admin/media/edit') ?>"><span class="glyphicon glyphicon-plus"></span> Dodaj novo vsebino</a>
 <hr>
 
 <?php

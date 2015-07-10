@@ -1,8 +1,8 @@
 <?php
 
-class Gallery_m extends MY_Model {
+class Media_m extends MY_Model {
 
-    protected $_table_name = 'galleries';
+    protected $_table_name = 'media';
     protected $_order_by = 'date';
     public $rules = array(
         'name' => array(
@@ -10,34 +10,31 @@ class Gallery_m extends MY_Model {
             'label' => 'Name',
             'rules' => 'required|trim|xss_clean'
         ),
-        'fl_link' => array(
-            'field' => 'fl_link',
-            'label' => 'fl_link',
-            'rules' => 'required'
+        'link' => array(
+            'field' => 'link',
+            'label' => 'link',
+            'rules' => 'required|trim|xss_clean'
         ),
         'date' => array(
             'field' => 'date',
             'label' => 'Date',
             'rules' => 'required'
-        ),
-        'seasonID' => array(
-            'field' => 'seasonID',
-            'label' => 'SeasonID',
-            'rules' => ''
         )
     );
+    
     function __construct() {
         parent::__construct();
     }
 
     public function get_new() {
-        $gallery = new stdClass();
-        $gallery->name = '';
-        $gallery->fl_link = '';
-        $gallery->date = '';
-        $gallery->seasonID = '';
-        $gallery->season_name = '';
-        return $gallery;
+        $media = new stdClass();
+        $media->name = '';
+        $media->tag = '';
+        $media->link = '';
+        $media->date = '';
+        $media->seasonID = '';
+        $media->season_name = '';
+        return $media;
     }
 
     function get_ID_array() {
@@ -46,8 +43,8 @@ class Gallery_m extends MY_Model {
         return $query->result();
     }
 
-    function get_gallery_count() {
-        $this->db->select('id')->from('gallery');
+    function get_media_count() {
+        $this->db->select('id')->from('media');
         $query = $this->db->get();
         return $query->num_rows();
     }
