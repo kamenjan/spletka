@@ -25,6 +25,7 @@
                     <a href="<?php echo base_url('admin/season') ?>" class="btn">sezone</a>
                     <a href="<?php echo base_url('admin/personnel') ?>" class="btn">osebje</a>
                     <a href="<?php echo base_url('admin/survey') ?>" class="btn">ankete</a>
+                    <a href="<?php echo base_url('admin/gallery') ?>" class="btn">albumi</a>
                     <a class="btn pull-right" href="<?= base_url('admin/user/logout') ?>"><span class="glyphicon glyphicon-off"></span> odjava</a>
                     <a class="btn pull-right" href="<?= base_url('admin/user/profile') ?>"><span class="glyphicon glyphicon-user"></span><?= ' ' . $this->session->userdata('name') ?></a>
                 </div>

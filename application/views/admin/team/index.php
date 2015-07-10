@@ -13,7 +13,7 @@ if (isset($teams)) {
         ?>
         <div class="row">
             <div class="col-xs-3">
-                <a href="<?= base_url() ?>admin/team/show_team/<?= $row->id ?>"><?= substr(strip_tags($row->name), 0, 50) ?></a>
+                <a href="<?= base_url('admin/team/show_team/') ?><?= '/' . $row->id ?>"><?= substr(strip_tags($row->name), 0, 50) ?></a>
             </div>
             <div class="col-xs-3">
                 <?php echo date('d.m.y H:i', strtotime($row->date_created)); ?>

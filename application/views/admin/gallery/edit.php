@@ -1,5 +1,5 @@
 <?php
-dump($this->_ci_cached_vars);
+//dump($this->_ci_cached_vars);
 ?>
 <?php echo validation_errors(); ?>
 <?php echo form_open(); ?>

@@ -108,12 +108,4 @@ class Team extends Admin_Controller {
         $this->spletka_m->team_m->delete($teamID);
         redirect(base_url() . 'admin/team');
     }
-
-    // TODO move function to parent controller
-    // use getClass() for controller name ('admin')
-    function approve($id) {
-        $this->spletka_m->team_m->approve($id);
-        redirect(base_url() . 'admin/team');
-    }
-
 }

@@ -62,11 +62,6 @@
         </div>
         <div class="col-xs-10">
             <?php echo form_submit('submit', 'Shrani ekipo', 'class="btn btn-primary"'); ?>
-            <!--KAJ JE S TEMI TRAILING SLASHI??-->
-            <?php if (isset($team->id)) { ?>
-                <a class="btn btn-primary" href="<?= base_url('admin/team/approve/') . '/' . $team->id ?>">Požegnaj</a>
-            <?php }
-            ?>
         </div>
     </div>
 

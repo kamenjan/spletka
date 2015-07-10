@@ -1,5 +1,4 @@
 <?php echo validation_errors(); ?>
-<?php dump($this->_ci_cached_vars);     ?>
 <?php echo form_open(); ?>
 <div class="container-fluid">
     <div class="row SS_padding-vertical">

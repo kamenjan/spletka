@@ -76,6 +76,17 @@ class MY_Model extends CI_Model {
         return $id;
     }
 
+//    public function test() {
+//        dump_exit(strtolower(get_class()));
+//        if (strtolower(get_class()) == 'people') {
+//            $filepath = './assets/uploads/post_img/' . $filename;
+//        }
+//    }
+
+
+    /*
+     * TODO repair function so it also deletes personnel image
+     */
     public function delete($_id) {
         $filter = $this->_primary_filter;
         $id = $filter($_id);
@@ -95,6 +106,10 @@ class MY_Model extends CI_Model {
             }
             // post_img folder
             if (isset($this->get_by(['id' => $_id])[0]->title)) {
+                $filepath = './assets/uploads/post_img/' . $filename;
+            }
+            // person_img folder
+            if (strtolower(get_class()) == 'people') {
                 $filepath = './assets/uploads/post_img/' . $filename;
             }
             $this->delete_picture($filepath);
@@ -123,7 +138,7 @@ class MY_Model extends CI_Model {
         // Make sure it does not delete default noimage.jpg picture
         if (strpos($filepath, 'noimage') === false) {
             unlink($filepath);
-        }      
+        }
     }
 
 }
