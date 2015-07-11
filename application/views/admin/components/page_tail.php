@@ -75,6 +75,16 @@
         removePadding();
     });
 
+    // Hide the text editor for comments
+    // TODO default display: none, show on event
+    $("#comment_textarea").hide();
+    $("button[id='comment']").click(function () {
+        $("#comment_textarea").show();
+        $('html, body').animate({
+            scrollTop: $("#comment_textarea").offset().top
+        }, 2000);
+    });
+
     jQuery(document).ready(function () {
 
         $('.SS_calendar').datepicker().on
@@ -98,6 +108,19 @@
         var currMonth = date.getMonth() + 1;
         var currYear = date.getFullYear();
         highlightEvents(currMonth + '-' + currYear);
+
+        $('#SS_media_selector').change(function () {
+
+            switch ($(this).val()) {
+                case 'gallery':
+                    $('#SS_youtube_link').hide();
+                    $('#SS_flickr_link').show();
+                    break;
+                case 'video':
+                    $('#SS_flickr_link').hide();
+                    $('#SS_youtube_link').show();
+            }
+        });
 
         // LightSlider
         $("#lightSlider").lightSlider({
@@ -181,14 +204,7 @@
             });
         });
 
-        // Hide the text editor for comments
-        $("#comment_textarea").hide();
-        $("button[id='comment']").click(function () {
-            $("#comment_textarea").show();
-            $('html, body').animate({
-                scrollTop: $("#comment_textarea").offset().top
-            }, 2000);
-        });
+
 
     });
 </script>

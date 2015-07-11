@@ -5,23 +5,33 @@ class Media_m extends MY_Model {
     protected $_table_name = 'media';
     protected $_order_by = 'date';
     public $rules = array(
+        'tag' => array(
+            'field' => 'tag',
+            'label' => 'Tag',
+            'rules' => 'required|trim|xss_clean'
+        ),
         'name' => array(
             'field' => 'name',
             'label' => 'Name',
             'rules' => 'required|trim|xss_clean'
         ),
-        'link' => array(
-            'field' => 'link',
-            'label' => 'link',
-            'rules' => 'required|trim|xss_clean'
+        'fl_link' => array(
+            'field' => 'fl_link',
+            'label' => 'fl_link',
+            'rules' => 'trim|xss_clean'
         ),
-        'date' => array(
-            'field' => 'date',
-            'label' => 'Date',
-            'rules' => 'required'
+        'yt_link' => array(
+            'field' => 'yt_link',
+            'label' => 'yt_link',
+            'rules' => 'trim|xss_clean'
+        ),        
+        'seasonID' => array(
+            'field' => 'seasonID',
+            'label' => 'SeasonID',
+            'rules' => 'required|trim|xss_clean',
         )
     );
-    
+
     function __construct() {
         parent::__construct();
     }
@@ -31,7 +41,6 @@ class Media_m extends MY_Model {
         $media->name = '';
         $media->tag = '';
         $media->link = '';
-        $media->date = '';
         $media->seasonID = '';
         $media->season_name = '';
         return $media;

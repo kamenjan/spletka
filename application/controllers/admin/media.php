@@ -30,9 +30,17 @@ class Media extends Admin_Controller {
         // Get the actual photo urls via a call to 'phpflickr' library with 
         // gallerys ID as an argument
         $this->load->library('phpflickr');
-        $this->data['media']->flickr = $this->phpflickr->photosets_getPhotos($this->data['media']->link);
 
-        $this->data['subview'] = 'admin/media/gallery';
+        switch ($this->data['media']->tag) {
+            case 'video':
+                
+                break;
+
+            case 'gallery':
+                $this->data['media']->flickr = $this->phpflickr->photosets_getPhotos($this->data['media']->link);
+        }
+
+        $this->data['subview'] = 'admin/media/media';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
@@ -46,7 +54,7 @@ class Media extends Admin_Controller {
         // Fetch a gallery or set a new one
         if ($id) {
             $this->data['media'] = $this->media_m->get($id);
-            $this->data['media']->date = date('d-m-Y', strtotime($this->data['media']->date));
+            //$this->data['media']->date = date('d-m-Y', strtotime($this->data['media']->date));
             count($this->data['media']) || $this->data['errors'][] = 'Media could not be found';
         } else {
             $this->data['media'] = $this->media_m->get_new();
@@ -64,20 +72,30 @@ class Media extends Admin_Controller {
 
             // Set $data array with form input ($_POST) columns
             $data = $this->media_m->array_from_post(array(
+                'tag',
                 'name',
-                'link',
                 'seasonID'
             ));
-            $data['link'] = trim($data['link']);
-            $data['date'] = date('Y-m-d H:i:s', strtotime($this->input->post('date')));
 
-            // Validate the flickr photoset ID
-            if ($this->phpflickr->photosets_getPhotos($data['link'])) {
-                $this->media_m->save($data, $id);
-                redirect('admin/media');
-            } else {
-                $this->data['errors']['photoset ID error'] = 'Ta photoset ne obstaja';
+            switch ($data['tag']) {
+                case 'video':
+                    $data['link'] = $this->input->post('yt_link');
+                    break;
+                case 'gallery':
+                    $data['link'] = $this->input->post('fl_link');
             }
+
+            //$data['date'] = date('Y-m-d H:i:s', strtotime($this->input->post('date')));
+            // TODO - Validate flickr photoset ID or youtube link
+//            if ($data['tag'] == 'gallery' && $this->phpflickr->photosets_getPhotos($data['link'])) {
+//                $this->media_m->save($data, $id);
+//                redirect('admin/media');
+//            } else {
+//                $this->data['errors']['photoset ID error'] = 'Ta photoset ne obstaja';
+//            }
+
+            $this->media_m->save($data, $id);
+            redirect('admin/media');
         }
 
         // Load the view

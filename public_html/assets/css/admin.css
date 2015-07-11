@@ -38,6 +38,14 @@ body {
     margin: auto;
 }
 
+#SS_flickr_link {
+    display: none;
+}
+
+#SS_youtube_link {
+    //display: none;
+}
+
 .SS_container {
     width: 100%;
     background-color: rgba(207, 207, 207, 0.93);
