@@ -1,7 +1,11 @@
-<?php
+<?php 
 //dump($this->_ci_cached_vars);
+echo validation_errors(); 
+foreach ($errors as $error) {
+    echo $error;
+}
 ?>
-<?php echo validation_errors(); ?>
+        
 <?php echo form_open(); ?>
 <div class="container-fluid">
 

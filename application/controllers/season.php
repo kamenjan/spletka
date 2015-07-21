@@ -19,6 +19,8 @@ class Season extends Frontend_Controller {
 
     function show_season($id) {
         $this->data['season'] = $this->spletka_m->get_season($id);
+        $this->data['media'] = $this->media_m->get_by(['seasonID' => $id]);
+        $this->data['posts'] = $this->post_m->get_by(['season_id' => $id]);
         $this->data['subview'] = 'season';
         $this->load->view('_layout_main', $this->data);
     }

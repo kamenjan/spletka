@@ -33,7 +33,7 @@ class Media extends Admin_Controller {
 
         switch ($this->data['media']->tag) {
             case 'video':
-                
+
                 break;
 
             case 'gallery':
@@ -80,22 +80,18 @@ class Media extends Admin_Controller {
             switch ($data['tag']) {
                 case 'video':
                     $data['link'] = $this->input->post('yt_link');
+                    $this->media_m->save($data, $id);
+                    redirect('admin/media');
                     break;
                 case 'gallery':
                     $data['link'] = $this->input->post('fl_link');
+                    if ($this->validate_flickr_photoset($data['link'])) {
+                        $this->media_m->save($data, $id);
+                        redirect('admin/media');
+                    } else {
+                        $this->data['errors']['upload_errors'] = 'Link is not a valid Flickr album ID';
+                    }
             }
-
-            //$data['date'] = date('Y-m-d H:i:s', strtotime($this->input->post('date')));
-            // TODO - Validate flickr photoset ID or youtube link
-//            if ($data['tag'] == 'gallery' && $this->phpflickr->photosets_getPhotos($data['link'])) {
-//                $this->media_m->save($data, $id);
-//                redirect('admin/media');
-//            } else {
-//                $this->data['errors']['photoset ID error'] = 'Ta photoset ne obstaja';
-//            }
-
-            $this->media_m->save($data, $id);
-            redirect('admin/media');
         }
 
         // Load the view
@@ -109,11 +105,15 @@ class Media extends Admin_Controller {
             $this->media_m->delete($id);
         }
 
-        redirect(base_url() . 'admin/gallery');
+        redirect(base_url() . 'admin/media');
     }
 
-    // TODO write a flicker photoset validation function
     function validate_flickr_photoset($photoset_id) {
+        return $this->phpflickr->photosets_getInfo($photoset_id);
+    }
+
+    // TODO create a function to validate youtube video ID
+    function validate_youtube_video($video_id) {
         
     }
 

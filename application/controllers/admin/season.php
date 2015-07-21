@@ -18,7 +18,9 @@ class Season extends Admin_Controller {
     }
 
     function show_season($id) {
-        $this->data['season'] = $this->spletka_m->get_season($id);        
+        $this->data['season'] = $this->spletka_m->get_season($id);
+        $this->data['media'] = $this->media_m->get_by(['seasonID' => $id]);
+        $this->data['posts'] = $this->post_m->get_by(['season_id' => $id]);
         $this->data['subview'] = 'admin/season/season';
         $this->load->view('admin/_layout_main', $this->data);
     }
