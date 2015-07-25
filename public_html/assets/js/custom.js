@@ -1,18 +1,16 @@
+/**
+ * Get the necessary data from the .data-container div.
+ */
+function getDataContainer() {
+    var container = $('.data-container');
+    window.controller = container.data('controller');
+    window.base_url = container.data('base_url');
+    window.answered_survey = container.data('answered_survey');
+}
 
-// Retrive backend data from data container
-//---------------------------------------------------------------------------//
-var controller;
-var base_url;
-var answered_survey;
+getDataContainer();
 
-$('.data-container').each(function () {
-    var container = $(this);
-    controller = container.data('controller');
-    base_url = container.data('base_url');
-    answered_survey = container.data('answered_survey');
-});
-
-console.log(answered_survey);
+console.log(window.answered_survey);
 
 // removes padding on main div, so the gap looks nice
 // it removes padding if main div takes whole width of window (smaller devices)
@@ -64,7 +62,7 @@ function drawChart(chartData) {
 //document.ready functions
 //---------------------------------------------------------------------------//
 $(document).ready(function (){
-    if (!answered_survey) {
+    if (!window.answered_survey) {
         $('#SS_piechart').hide();
         console.log('debug');
     }
@@ -76,7 +74,7 @@ $(document).ready(function (){
             var currYear = String(e.date).split(" ")[3];
             var date = currMonth + '-' + currYear;
 
-            $.post(base_url + controller + '/events_per_month/' + date,
+            $.post(window.base_url + window.controller + '/events_per_month/' + date,
                    function (response) {
                 for (var day in response) {
                     if (response.hasOwnProperty(day)) {
@@ -89,7 +87,7 @@ $(document).ready(function (){
                 }
             }, 'json');
 
-            console.log(controller);
+            console.log(window.controller);
 
         }).datepicker().on
         ('changeDate', function (e) {
@@ -97,7 +95,7 @@ $(document).ready(function (){
             var day = date.getDate();
             var month = date.getMonth() + 1;
             var year = date.getFullYear();
-            var url = base_url + 'calendar/date/' + day + '-' + month + '-' +
+            var url = window.base_url + 'calendar/date/' + day + '-' + month + '-' +
                       year;
             $(location).attr('href', url);
         });
@@ -106,7 +104,7 @@ $(document).ready(function (){
     // Draw a survey result char in sidebar
     // JQuery AJAX function ($.ajax or $.post) - usese post to communicate with
     // server
-    $.post(base_url + controller + '/get_survey', function (response) {
+    $.post(window.base_url + window.controller + '/get_survey', function (response) {
         var chartData = response;
         drawChart(chartData);
     }, 'json');
@@ -117,7 +115,7 @@ $(document).ready(function (){
     var currMonth = now.getMonth() + 1;
     var currYear = now.getFullYear();
     var date = currMonth + '-' + currYear;
-    $.post(base_url + controller + '/events_per_month/' + date,
+    $.post(window.base_url + window.controller + '/events_per_month/' + date,
            function (response) {
         for (var day in response) {
             if (response.hasOwnProperty(day)) {
@@ -154,7 +152,7 @@ $(document).ready(function (){
 
         // JQuery AJAX function ($.ajax or $.post) - usese post to communicate
         // with server
-        $.post(base_url + controller + '/update_survey', answer,
+        $.post(window.base_url + window.controller + '/update_survey', answer,
                function (response) {
 
             // TUKI !!!!!
