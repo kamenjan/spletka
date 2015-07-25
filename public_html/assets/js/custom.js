@@ -74,7 +74,8 @@ $(document).ready(function (){
             var currYear = String(e.date).split(" ")[3];
             var date = currMonth + '-' + currYear;
 
-            $.post(window.base_url + window.controller + '/events_per_month/' + date,
+            $.post(window.base_url + window.controller + 
+                       '/events_per_month/' + date,
                    function (response) {
                 for (var day in response) {
                     if (response.hasOwnProperty(day)) {
@@ -95,7 +96,10 @@ $(document).ready(function (){
             var day = date.getDate();
             var month = date.getMonth() + 1;
             var year = date.getFullYear();
-            var url = window.base_url + 'calendar/date/' + day + '-' + month + '-' +
+            var url = window.base_url + 
+                      'calendar/date/' + 
+                      day + '-' + 
+                      month + '-' +
                       year;
             $(location).attr('href', url);
         });
@@ -104,7 +108,8 @@ $(document).ready(function (){
     // Draw a survey result char in sidebar
     // JQuery AJAX function ($.ajax or $.post) - usese post to communicate with
     // server
-    $.post(window.base_url + window.controller + '/get_survey', function (response) {
+    $.post(window.base_url + window.controller + '/get_survey', 
+           function (response) {
         var chartData = response;
         drawChart(chartData);
     }, 'json');
