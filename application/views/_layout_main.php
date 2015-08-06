@@ -21,17 +21,38 @@
 
     <div  class="row">
         <div class="col-sm-12">
-            <div id="navigation" class="SS_container">
-                <span style="border-right: 1px dotted;"><a href="<?php echo base_url('home') ?>" class="btn glyphicon glyphicon-home"></a></span>
-                <span><a href="<?php echo base_url('season') ?>" class="btn">SEZONA <?= $current_season ?></a></span>
-                <span style="border-right: 1px dotted;"><a href="<?php echo base_url('archive') ?>" class="btn">ARHIV</a></span>
-                <span><a href="<?php echo base_url('about') ?>" class="btn">O ŠILI</a></span>
-                <span><a href="<?php echo base_url('people') ?>" class="btn">OSEBJE</a></span>
-                <span><a href="<?php echo base_url('cooperation') ?>" class="btn">SODELUJTE Z NAMI</a></span>
-                <span style="border-right: 1px dotted;"><a href="<?php echo base_url('contact') ?>" class="btn">KONTAKT</a></span>
-                <span><a href="<?php echo base_url('improv') ?>" class="btn">O IMPROVIZACIJI</a></span>
-                <span><a href="<?php echo base_url('international') ?>" class="btn">INTERNATIONAL</a></span>
-            </div>
+            <nav id="navigation" class="SS_container">
+	            <a href="#" id="nav-pull"><span class="glyphicon glyphicon-menu-hamburger" style="margin-right:6px"></span>Meni</a>
+	            <ul>
+					<li style="border-right: 1px dotted;">
+						<a href="<?php echo base_url('home') ?>" class="btn"><span class="glyphicon glyphicon-home" style="margin-right:6px"></span>ZADNJE OBJAVE</a>
+					</li>
+	                <li>
+	                	<a href="<?php echo base_url('season') ?>" class="btn">SEZONA <?= $current_season ?></a>
+	                </li>
+	                <li style="border-right: 1px dotted;">
+	                	<a href="<?php echo base_url('archive') ?>" class="btn">ARHIV</a>
+	                </li>
+	                <li>
+	                	<a href="<?php echo base_url('about') ?>" class="btn">O ŠILI</a>
+	                </li>
+	                <li>
+	                	<a href="<?php echo base_url('people') ?>" class="btn">OSEBJE</a>
+					</li>
+	                <li>
+	                	<a href="<?php echo base_url('cooperation') ?>" class="btn">SODELUJTE Z NAMI</a>
+	                </li>
+	                <li style="border-right: 1px dotted;">
+	                	<a href="<?php echo base_url('contact') ?>" class="btn">KONTAKT</a>
+	                </li>
+	                <li>
+	                	<a href="<?php echo base_url('improv') ?>" class="btn">O IMPROVIZACIJI</a>
+	                </li>
+	                <li>
+	                	<a href="<?php echo base_url('international') ?>" class="btn">INTERNATIONAL</a>
+					</li>
+				</ul>
+            </nav>
         </div>
     </div>
 
