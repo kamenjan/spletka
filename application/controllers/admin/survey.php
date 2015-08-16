@@ -86,6 +86,8 @@ class Survey extends Admin_Controller {
         if (!$this->correct_permissions('admin')) {
             redirect(base_url('admin/survey'));
         }
+        
+        //call session_m update function, remove survey true
 
         $this->survey_m->activate($id);
         redirect(base_url() . 'admin/survey');

@@ -22,7 +22,7 @@
                     'report' => 'reportaža',
                     'article' => 'članek',
                     'international' => 'international',
-                    'announcement' => 'obesvtilo'
+                    'announcement' => 'obvestilo'
                         ], $post->tag);
                 ?>
             </div>

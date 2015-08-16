@@ -5,11 +5,6 @@ class Season_m extends MY_Model {
     protected $_table_name = 'seasons';
     protected $_order_by = 'start desc';
 
-    /*
-     * TODO:
-     *      1. Set form rules for seasons (url link, file links, tinyMCE text) 
-     *      2. 
-     */
     public $rules = array(
         'body' => array(
             'field' => 'body',
@@ -22,13 +17,15 @@ class Season_m extends MY_Model {
         parent::__construct();
     }
 
+    // Returns all the seasons that have already passed for the front end 
+    // archive view
     function get_archive() {
         
         $method = 'result'; // 'result_array'
         $now = date('Y-m-d H:i:s');
         
-        //$this->db->where('date_event >', $start);
         $this->db->where('end <', $now);
+        $this->db->order_by($this->_order_by);
 
         return $this->db->get($this->_table_name)->$method();
     }

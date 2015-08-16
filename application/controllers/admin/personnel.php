@@ -65,7 +65,7 @@ class Personnel extends Admin_Controller {
             $this->data['file_data'] = $this->upload->data();
 
             // Set $data array with form input ($_POST) columns
-            $data = $this->gallery_m->array_from_post(array(
+            $data = $this->personnel_m->array_from_post(array(
                 'name',
                 'body'
             ));
