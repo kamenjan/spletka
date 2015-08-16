@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
         <link rel="shortcut icon" href="<?php echo base_url("assets/images/favicon.ico"); ?>"> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin.css"); ?>">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url("assets/datepicker/build/build_standalone3.less"); ?>" />
 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/datepicker.css"); ?>">
@@ -16,6 +15,10 @@
 
         <!--LightSlider-->
         <link href="<?php echo base_url('assets/lightslider/src/css/lightslider.css') ?>" media="screen" rel="stylesheet">
+        
+        
+        <!-- moved to bottom, so it overrides bootstrap -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin.css"); ?>">
 
     </head>
     <body>
