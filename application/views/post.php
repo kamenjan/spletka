@@ -1,30 +1,33 @@
 <?php //dump($this->_ci_cached_vars);     ?>
 
 
-    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12"> 
-        <h3><?= $post->title ?></h3>
-        <p><?= $post->author . ' | ' . $post->date_created ?></p>
+    <div class="SS_post col-lg-11 col-md-11 col-sm-11 col-xs-11"> 
+        <h2><?= $post->title ?></h2>
+        <div class="post-info"><p><?= $post->author . ' | ' . $post->date_created ?></p></div>
         <p><?= $post->body ?></p>
-
-        <!--YouTube video-->
-        <?php if ($post->yt_link != '') { ?>
-        <div id="player" align="middle"></div>
         
-        <?php } ?>
+        <div class="media-wrapper">
+            <!--YouTube video-->
+            <?php if ($post->yt_link != '') { ?>
+            <div id="player" align="middle">
 
-        <!--Flickr gallery-->
-        <?php if (isset($post->flickr)) { ?>
-            <div style="margin: auto; width: 600px;">
-                <ul id="lightSlider" class="gallery list-unstyled cS-hidden">
-                    <?php foreach ($post->flickr['photoset']['photo'] as $photo) { ?>
-                        <li data-thumb="https://farm<?= $photo['farm'] ?>.staticflickr.com/<?= $photo['server'] ?>/<?= $photo['id'] ?>_<?= $photo['secret'] ?>_t.jpg">
-                            <img src="https://farm<?= $photo['farm'] ?>.staticflickr.com/<?= $photo['server'] ?>/<?= $photo['id'] ?>_<?= $photo['secret'] ?>.jpg" alt="slika"/>
-                        </li>
-                    <?php } ?>
-                </ul>
+            <?php } ?>
+
+            <!--Flickr gallery-->
+            <?php if (isset($post->flickr)) { ?>
+                <div style="margin: auto; width: 600px;">
+                    <ul id="lightSlider" class="gallery list-unstyled cS-hidden">
+                        <?php foreach ($post->flickr['photoset']['photo'] as $photo) { ?>
+                            <li data-thumb="https://farm<?= $photo['farm'] ?>.staticflickr.com/<?= $photo['server'] ?>/<?= $photo['id'] ?>_<?= $photo['secret'] ?>_t.jpg">
+                                <img src="https://farm<?= $photo['farm'] ?>.staticflickr.com/<?= $photo['server'] ?>/<?= $photo['id'] ?>_<?= $photo['secret'] ?>.jpg" alt="slika"/>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            <?php } ?>
             </div>
-        <?php } ?>
-    </div>
+         </div>
+        
 
 
 <script>
