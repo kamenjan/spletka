@@ -1,7 +1,7 @@
 <?php //dump($this->_ci_cached_vars);     ?>
 
 
-    <div class="SS_post col-lg-11 col-md-11 col-sm-11 col-xs-11"> 
+    <div class="SS_post col-xs-11"> 
         <h2><?= $post->title ?></h2>
         <div class="post-info"><p><?= $post->author . ' | ' . $post->date_created ?></p></div>
         <p><?= $post->body ?></p>

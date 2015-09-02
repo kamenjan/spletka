@@ -1,4 +1,4 @@
-<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
     <?php //dump($this->_ci_cached_vars); ?>
 
 

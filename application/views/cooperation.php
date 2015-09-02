@@ -1,5 +1,5 @@
 <div class="container-fluid">
-        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+        <div class="col-xs-11">
 	        <h1>Sodelovanje</h1>
             <h3>izvedbe kulturnih dnevov</h3>
             <p>za osnovne sole in druge izobrazevalne institucije</p>

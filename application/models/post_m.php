@@ -88,6 +88,7 @@ class Post_m extends MY_Model {
         $this->db->where('approved =', 'true');
         $this->db->where('tag =', 'news');
         $this->db->or_where('tag =', 'report');
+        $this->db->or_where('tag =', 'announcement');
         $this->db->order_by("date_created", "desc");
 
         return $this->db->get($this->_table_name)->result();

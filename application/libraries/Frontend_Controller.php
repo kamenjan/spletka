@@ -19,7 +19,7 @@ class Frontend_Controller extends MY_Controller {
 
     // AJAX asynchronious function. 
     // Activated on survey submit.
-    //  Takes answerID and returns survey data
+    // Takes answerID and returns survey data
     // TODO - override post input, get input from function call
     function update_survey() {
 

@@ -1,4 +1,4 @@
-<div class="SS_post col-lg-11 col-md-11 col-sm-11 col-xs-11">
+<div class="SS_post col-xs-11">
     <h1>International cooperation</h1>
     <p>opis, pretkli dogodki in dogovori, vse v anglescini</p>
 </div>
